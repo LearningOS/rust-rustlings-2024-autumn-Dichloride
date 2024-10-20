@@ -34,8 +34,6 @@
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 fn main() {}
 
 #[cfg(test)]
@@ -44,12 +42,17 @@ mod tests {
 
     #[test]
     fn test_success() {
+        // Get the current timestamp
         let timestamp = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_secs();
+
+        // Read the environment variable `TEST_FOO`
         let s = std::env::var("TEST_FOO").unwrap();
         let e: u64 = s.parse().unwrap();
+
+        // Assert that the current timestamp is within 10 seconds of the environment variable
         assert!(timestamp >= e && timestamp < e + 10);
     }
 }
